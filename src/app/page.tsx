@@ -213,17 +213,17 @@ export default function FuturisticTeachersDay() {
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-20 text-center">
-          <div className="max-w-6xl mx-auto">
+        <section className="container mx-auto px-4 py-12 text-center">
+          <div className="max-w-5xl mx-auto">
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-slate-900/80 to-blue-900/80 backdrop-blur-xl border border-blue-500/30 text-blue-300 px-8 py-4 rounded-full text-sm font-bold mb-12 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/20">
-              <Zap className="w-5 h-5 animate-pulse" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-900/80 to-blue-900/80 backdrop-blur-xl border border-blue-500/30 text-blue-300 px-6 py-2 rounded-full text-xs font-bold mb-8 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/20">
+              <Zap className="w-4 h-4 animate-pulse" />
               JIS COLLEGE OF ENGINEERING
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping"></div>
             </div>
             
             {/* Main Title */}
-            <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-black mb-8 leading-none">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none">
               <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent animate-pulse">
                 TEACHER'S
               </span>
@@ -234,33 +234,33 @@ export default function FuturisticTeachersDay() {
             </h1>
             
             {/* Subtitle */}
-            <div className="relative mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-300 mb-4">
+            <div className="relative mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-300 mb-3">
                 COMPUTER SCIENCE OF ENGINEERING
               </h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto"></div>
+              <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto"></div>
             </div>
             
             {/* Description */}
-            <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
               Celebrating excellence in education at <span className="text-blue-400 font-semibold">JIS College of Engineering</span>. 
               Honoring our dedicated Computer Science faculty who shape the future of technology and innovation.
             </p>
 
             {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="grid md:grid-cols-3 gap-6 mb-16">
               {[
                 { icon: Cpu, title: "COMPUTER SCIENCE", desc: "Advanced programming & algorithms", color: "from-blue-500 to-cyan-500" },
                 { icon: Shield, title: "ENGINEERING EXCELLENCE", desc: "Building future innovators", color: "from-cyan-500 to-blue-500" },
                 { icon: Star, title: "TECHNOLOGY LEADERSHIP", desc: "Shaping digital transformation", color: "from-blue-600 to-indigo-500" }
               ].map((item, i) => (
-                <Card key={i} className="group bg-gradient-to-br from-slate-900/50 to-blue-900/30 backdrop-blur-xl border border-blue-500/20 hover:border-blue-400/50 transition-all duration-500 hover:scale-105 hover:-translate-y-2 shadow-2xl shadow-blue-500/10">
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center group-hover:rotate-12 transition-transform duration-300`}>
-                      <item.icon className="w-8 h-8 text-white" />
+                <Card key={i} className="group bg-gradient-to-br from-slate-900/50 to-blue-900/30 backdrop-blur-xl border border-blue-500/20 hover:border-blue-400/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 shadow-2xl shadow-blue-500/10">
+                  <CardContent className="p-6 text-center">
+                    <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center group-hover:rotate-12 transition-transform duration-300`}>
+                      <item.icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-blue-300 mb-3 tracking-wider">{item.title}</h3>
-                    <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-blue-300 mb-2 tracking-wider">{item.title}</h3>
+                    <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -269,64 +269,64 @@ export default function FuturisticTeachersDay() {
         </section>
 
         {/* Event Invitation */}
-        <section className="container mx-auto px-4 py-20">
-          <div className="max-w-5xl mx-auto">
+        <section className="container mx-auto px-4 py-12">
+          <div className="max-w-4xl mx-auto">
             <Card className="bg-gradient-to-br from-slate-900/80 to-blue-900/60 backdrop-blur-2xl border-2 border-blue-500/30 shadow-2xl shadow-blue-500/20 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-600/10"></div>
-              <CardContent className="relative p-12">
-                <div className="text-center mb-12">
-                  <div className="inline-flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-                      <Users className="w-6 h-6 text-white" />
+              <CardContent className="relative p-8">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-2 mb-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                      <Users className="w-4 h-4 text-white" />
                     </div>
-                    <h2 className="text-5xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
+                    <h2 className="text-3xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
                       SYSTEM INVITATION
                     </h2>
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                      <Users className="w-6 h-6 text-white" />
+                    <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                      <Users className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  <p className="text-xl text-blue-300 font-light">JIS College of Engineering celebration protocol activated</p>
+                  <p className="text-lg text-blue-300 font-light">JIS College of Engineering celebration protocol activated</p>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
                     {[
                       { icon: Calendar, label: "DATE STAMP", value: "SEPTEMBER 5, 2025" },
                       { icon: Clock, label: "TIME SYNC", value: "10:00 - 14:00 HOURS" }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-6 group">
-                        <div className="w-14 h-14 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                          <item.icon className="w-7 h-7 text-white" />
+                      <div key={i} className="flex items-center gap-4 group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                          <item.icon className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-blue-400 tracking-widest mb-1">{item.label}</h3>
-                          <p className="text-xl font-semibold text-white">{item.value}</p>
+                          <h3 className="text-xs font-bold text-blue-400 tracking-widest mb-1">{item.label}</h3>
+                          <p className="text-lg font-semibold text-white">{item.value}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="space-y-8">
+                  <div className="space-y-6">
                     {[
                       { icon: MapPin, label: "LOCATION NODE", value: "MAIN AUDITORIUM SECTOR" },
                       { icon: Heart, label: "DRESS PROTOCOL", value: "SMART CASUAL MODE" }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-6 group">
-                        <div className="w-14 h-14 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                          <item.icon className="w-7 h-7 text-white" />
+                      <div key={i} className="flex items-center gap-4 group">
+                        <div className="w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                          <item.icon className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-cyan-400 tracking-widest mb-1">{item.label}</h3>
-                          <p className="text-xl font-semibold text-white">{item.value}</p>
+                          <h3 className="text-xs font-bold text-cyan-400 tracking-widest mb-1">{item.label}</h3>
+                          <p className="text-lg font-semibold text-white">{item.value}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 
-                <div className="mt-12 text-center">
-                  <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                <div className="mt-8 text-center">
+                  <p className="text-base text-slate-300 mb-6 leading-relaxed">
                     Join us for an immersive celebration of educational excellence at JIS College of Engineering. 
                     Honoring our dedicated faculty and celebrating the spirit of teaching and learning.
                   </p>
@@ -337,10 +337,10 @@ export default function FuturisticTeachersDay() {
         </section>
 
         {/* Holographic Card Generator */}
-        <section className="container mx-auto px-4 py-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-6xl md:text-7xl font-black mb-6">
+        <section className="container mx-auto px-4 py-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
                   HOLOGRAPHIC
                 </span>
@@ -349,19 +349,19 @@ export default function FuturisticTeachersDay() {
                   GENERATOR
                 </span>
               </h2>
-              <p className="text-xl text-slate-400 font-light">
+              <p className="text-lg text-slate-400 font-light">
                 Generate your personalized quantum appreciation certificate
               </p>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Generator Interface */}
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <Card className="bg-gradient-to-br from-slate-900/80 to-blue-900/40 backdrop-blur-xl border-2 border-blue-500/30 shadow-2xl shadow-blue-500/20">
-                  <CardContent className="p-10">
-                    <div className="space-y-8">
+                  <CardContent className="p-6">
+                    <div className="space-y-6">
                       <div className="relative">
-                        <label className="block text-lg font-bold text-blue-300 mb-4 tracking-wider">
+                        <label className="block text-base font-bold text-blue-300 mb-3 tracking-wider">
                           TEACHER IDENTIFIER INPUT
                         </label>
                         <Input
@@ -375,7 +375,7 @@ export default function FuturisticTeachersDay() {
                               : verificationMessage && !isVerified 
                                 ? 'border-red-400 focus:border-red-300'
                                 : 'border-blue-500/30 focus:border-cyan-400'
-                          } text-white placeholder-slate-500 text-lg py-4 rounded-xl backdrop-blur-sm transition-all duration-300`}
+                          } text-white placeholder-slate-500 text-base py-3 rounded-lg backdrop-blur-sm transition-all duration-300`}
                         />
                         
                         {/* Verification Status */}
@@ -406,25 +406,25 @@ export default function FuturisticTeachersDay() {
                       <Button
                         onClick={downloadCard}
                         disabled={!isVerified || isGenerating}
-                        className={`w-full font-bold py-6 rounded-xl text-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg ${
+                        className={`w-full font-bold py-4 rounded-lg text-base transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg ${
                           isVerified 
                             ? 'bg-gradient-to-r from-green-600 via-blue-600 to-cyan-600 hover:from-green-700 hover:via-blue-700 hover:to-cyan-700 shadow-green-500/30' 
                             : 'bg-gradient-to-r from-slate-600 to-slate-700 shadow-slate-500/30'
                         }`}
                       >
                         {isGenerating ? (
-                          <div className="flex items-center gap-3">
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                             GENERATING CARD...
                           </div>
                         ) : !isVerified ? (
-                          <div className="flex items-center gap-3">
-                            <Shield className="w-6 h-6" />
+                          <div className="flex items-center gap-2">
+                            <Shield className="w-5 h-5" />
                             VERIFICATION REQUIRED
                           </div>
                         ) : (
-                          <div className="flex items-center gap-3">
-                            <Download className="w-6 h-6" />
+                          <div className="flex items-center gap-2">
+                            <Download className="w-5 h-5" />
                             GENERATE GREETING CARD
                           </div>
                         )}
@@ -450,38 +450,38 @@ export default function FuturisticTeachersDay() {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-cyan-600/10"></div>
                   <div className="absolute inset-4 border border-blue-400/30 rounded-lg"></div>
                   
-                  <CardContent className="h-full flex flex-col justify-center items-center text-center p-8 relative z-10">
-                    <div className="space-y-6">
+                  <CardContent className="h-full flex flex-col justify-center items-center text-center p-6 relative z-10">
+                    <div className="space-y-4">
                       <div className="text-center">
-                        <h3 className="text-3xl md:text-4xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text mb-2">
+                        <h3 className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text mb-2">
                           TEACHER'S DAY 2025
                         </h3>
-                        <p className="text-lg font-bold text-blue-300 tracking-widest">
+                        <p className="text-base font-bold text-blue-300 tracking-widest">
                           FUTURE EDUCATOR
                         </p>
                       </div>
                       
                       {teacherName && isVerified && (
-                        <div className="py-4">
-                          <p className="text-2xl md:text-3xl font-bold text-white tracking-wider">
+                        <div className="py-3">
+                          <p className="text-xl md:text-2xl font-bold text-white tracking-wider">
                             {teacherName.toUpperCase()}
                           </p>
                         </div>
                       )}
                       
-                      <div className="space-y-2">
-                        <p className="text-lg text-slate-300 font-medium tracking-wide">
+                      <div className="space-y-1">
+                        <p className="text-sm text-slate-300 font-medium tracking-wide">
                           SHAPING MINDS • BUILDING FUTURES
                         </p>
-                        <p className="text-lg text-slate-300 font-medium tracking-wide">
+                        <p className="text-sm text-slate-300 font-medium tracking-wide">
                           INSPIRING INNOVATION
                         </p>
                       </div>
                       
-                      <div className="flex justify-center items-center gap-4 text-blue-400 pt-4">
-                        <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
-                        <span className="text-lg font-bold tracking-widest">SEPTEMBER 5, 2025</span>
-                        <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
+                      <div className="flex justify-center items-center gap-3 text-blue-400 pt-3">
+                        <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+                        <span className="text-base font-bold tracking-widest">SEPTEMBER 5, 2025</span>
+                        <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
                       </div>
                     </div>
                   </CardContent>
@@ -490,10 +490,10 @@ export default function FuturisticTeachersDay() {
                 {(!teacherName || !isVerified) && (
                   <div className="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
-                        <Cpu className="w-8 h-8 text-white animate-pulse" />
+                      <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                        <Cpu className="w-6 h-6 text-white animate-pulse" />
                       </div>
-                      <p className="text-blue-300 text-xl font-bold tracking-wider">
+                      <p className="text-blue-300 text-lg font-bold tracking-wider">
                         {!teacherName ? 'AWAITING INPUT' : 'VERIFICATION REQUIRED'}
                       </p>
                     </div>
@@ -505,17 +505,17 @@ export default function FuturisticTeachersDay() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gradient-to-r from-slate-900 via-blue-900/50 to-slate-900 border-t border-blue-500/20 py-16 mt-20">
+        <footer className="bg-gradient-to-r from-slate-900 via-blue-900/50 to-slate-900 border-t border-blue-500/20 py-12 mt-16">
           <div className="container mx-auto px-4 text-center">
-            <div className="flex justify-center items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-white" />
+            <div className="flex justify-center items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-white" />
               </div>
-              <span className="text-3xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
+              <span className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
                 JIS COLLEGE OF ENGINEERING 2025
               </span>
             </div>
-            <p className="text-blue-300 text-lg font-light mb-8">
+            <p className="text-blue-300 text-base font-light mb-6">
               Celebrating excellence in Computer Science education
             </p>
             <div className="flex justify-center items-center gap-6">
