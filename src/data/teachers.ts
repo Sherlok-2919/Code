@@ -1,7 +1,6 @@
 // Pre-approved teachers list
-export const approvedTeachers = [
-    HOD CSE JISCE 
-"Dr. Pranati Rakshit" 
+export const approvedTeachers = [ 
+"Dr. Pranati Rakshit(HOD)" 
 "Jayshree Bhattacharya" 
 "Bikramjit Sarkar" 
 "Sumanta Chatterjee" 
