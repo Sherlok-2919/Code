@@ -1,25 +1,29 @@
 // Pre-approved teachers list
 export const approvedTeachers = [
-    "Dr. Sarah Johnson",
-    "Prof. Michael Chen",
-    "Ms. Emily Rodriguez",
-    "Dr. James Wilson",
-    "Prof. Lisa Anderson",
-    "Mr. David Thompson",
-    "Dr. Maria Garcia",
-    "Prof. Robert Kim",
-    "Ms. Jennifer Lee",
-    "Dr. Christopher Brown",
-    "Prof. Amanda Davis",
-    "Mr. Kevin Martinez",
-    "Dr. Rachel Taylor",
-    "Prof. Steven Clark",
-    "Ms. Nicole White",
-    "Dr. Daniel Lewis",
-    "Prof. Jessica Hall",
-    "Mr. Mark Robinson",
-    "Dr. Laura Walker",
-    "Prof. Thomas Young"
+    HOD CSE JISCE 
+"Dr. Pranati Rakshit" 
+"Jayshree Bhattacharya" 
+"Bikramjit Sarkar" 
+"Sumanta Chatterjee" 
+"Jayeeta Ghosh" 
+"Pijush Kanti Ghosh" 
+"DEBASHISH SAHA ROY" 
+"Raja Dey" 
+"Kaushik Roy Choudhury" 
+"Uddalak Mitra" 
+"Sanket Dan" 
+"Sanjukta Chatterjee" 
+"Purba Mukhopadhyay" 
+"SHIRSHENDU DUTTA" 
+"Ira Nath" 
+"Asim Kumar Pal" 
+"Amit Bera" 
+"Nandita Pasari"
+"Smriti Dey"
+"Rakhi Dey"
+"Samiran Dey" 
+"Pandey Ji"
+"Subhendu Banarjee"
   ];
   
   export const isTeacherApproved = (name: string): boolean => {
