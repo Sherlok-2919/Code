@@ -176,16 +176,41 @@ export default function FuturisticTeachersDay() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Animated Background Grid */}
-      <div className="fixed inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          animation: 'grid-move 20s linear infinite'
-        }}></div>
+      {/* Enhanced Background with Moving Elements */}
+      <div className="fixed inset-0">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/30 to-slate-900"></div>
+        
+        {/* Animated Grid */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 212, 255, 0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 212, 255, 0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            animation: 'grid-move 20s linear infinite'
+          }}></div>
+        </div>
+        
+        {/* Floating Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full blur-2xl opacity-15"
+              style={{
+                width: `${100 + Math.random() * 150}px`,
+                height: `${100 + Math.random() * 150}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                background: `radial-gradient(circle, ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'} 0%, transparent 70%)`,
+                animation: `float-orb ${12 + Math.random() * 8}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Mouse Follower */}
@@ -201,12 +226,12 @@ export default function FuturisticTeachersDay() {
         }}
       />
 
-      {/* Floating Particles */}
+      {/* Enhanced Floating Particles */}
       <div className="fixed inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60"
+            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-50"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -253,20 +278,47 @@ export default function FuturisticTeachersDay() {
               Honoring our dedicated Computer Science faculty who shape the future of technology and innovation.
             </p>
 
-            {/* Feature Cards */}
+            {/* Optimized Feature Cards with Off-White Bluish Purple */}
             <div className="grid md:grid-cols-3 gap-6 mb-16">
               {[
-                { icon: Cpu, title: "COMPUTER SCIENCE", desc: "Advanced programming & algorithms", color: "from-blue-500 to-cyan-500" },
-                { icon: Shield, title: "ENGINEERING EXCELLENCE", desc: "Building future innovators", color: "from-cyan-500 to-blue-500" },
-                { icon: Star, title: "TECHNOLOGY LEADERSHIP", desc: "Shaping digital transformation", color: "from-blue-600 to-indigo-500" }
+                { 
+                  icon: Cpu, 
+                  title: "COMPUTER SCIENCE", 
+                  desc: "Advanced programming & algorithms", 
+                  color: "from-slate-200 to-blue-200",
+                  gradient: "from-slate-100/20 to-blue-100/20",
+                  border: "border-slate-300/30"
+                },
+                { 
+                  icon: Shield, 
+                  title: "ENGINEERING EXCELLENCE", 
+                  desc: "Building future innovators", 
+                  color: "from-blue-200 to-purple-200",
+                  gradient: "from-blue-100/20 to-purple-100/20",
+                  border: "border-blue-300/30"
+                },
+                { 
+                  icon: Star, 
+                  title: "TECHNOLOGY LEADERSHIP", 
+                  desc: "Shaping digital transformation", 
+                  color: "from-purple-200 to-indigo-200",
+                  gradient: "from-purple-100/20 to-indigo-100/20",
+                  border: "border-purple-300/30"
+                }
               ].map((item, i) => (
-                <Card key={i} className="group bg-gradient-to-br from-slate-900/50 to-blue-900/30 backdrop-blur-xl border border-blue-500/20 hover:border-blue-400/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 shadow-2xl shadow-blue-500/10">
-                  <CardContent className="p-6 text-center">
-                    <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center group-hover:rotate-12 transition-transform duration-300`}>
-                      <item.icon className="w-6 h-6 text-white" />
+                <Card key={i} className={`group relative overflow-hidden bg-gradient-to-br ${item.gradient} backdrop-blur-xl border ${item.border} hover:border-white/50 transition-all duration-300 hover:scale-102 hover:-translate-y-1 shadow-xl shadow-black/30`}>
+                  {/* Glass Effect Overlay */}
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+                  
+                  <CardContent className="relative z-10 p-6 text-center">
+                    <div className={`w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-r ${item.color} flex items-center justify-center group-hover:rotate-6 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-black/20`}>
+                      <item.icon className="w-7 h-7 text-slate-700" />
                     </div>
-                    <h3 className="text-lg font-bold text-blue-300 mb-2 tracking-wider">{item.title}</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-lg font-black text-slate-800 mb-2 tracking-wider group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">{item.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed font-medium">{item.desc}</p>
+                    
+                    {/* Hover Effect Line */}
+                    <div className="w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-3 transition-all duration-300"></div>
                   </CardContent>
                 </Card>
               ))}
@@ -274,68 +326,72 @@ export default function FuturisticTeachersDay() {
           </div>
         </section>
 
-        {/* Event Invitation */}
+        {/* Optimized Event Invitation with Off-White Bluish Purple */}
         <section className="container mx-auto px-4 py-12">
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-br from-slate-900/80 to-blue-900/60 backdrop-blur-2xl border-2 border-blue-500/30 shadow-2xl shadow-blue-500/20 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-600/10"></div>
-              <CardContent className="relative p-8">
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center gap-2 mb-4">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-                      <Users className="w-4 h-4 text-white" />
-                    </div>
-                    <h2 className="text-3xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
-                      SYSTEM INVITATION
-                    </h2>
-                    <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                      <Users className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <p className="text-lg text-blue-300 font-light">JIS College of Engineering celebration protocol activated</p>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    {[
-                      { icon: Calendar, label: "DATE STAMP", value: "SEPTEMBER 5, 2025" },
-                      { icon: Clock, label: "TIME SYNC", value: "2:00 - 5:00 PM" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 group">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                          <item.icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="text-xs font-bold text-blue-400 tracking-widest mb-1">{item.label}</h3>
-                          <p className="text-lg font-semibold text-white">{item.value}</p>
-                        </div>
+          <div className="max-w-5xl mx-auto">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-slate-100/40 via-blue-100/30 to-purple-100/40 backdrop-blur-xl border border-slate-300/25 shadow-xl shadow-black/20">
+              {/* Glass Effect Overlay */}
+              <div className="absolute inset-0 bg-white/8 backdrop-blur-sm"></div>
+              
+              <CardContent className="relative z-10 p-8">
+                                  <div className="text-center mb-10">
+                    <div className="inline-flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-r from-slate-200 to-blue-200 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-300/30">
+                        <Users className="w-6 h-6 text-slate-700" />
                       </div>
-                    ))}
+                      <h2 className="text-4xl font-black text-transparent bg-gradient-to-r from-slate-700 via-blue-600 to-purple-600 bg-clip-text">
+                        SYSTEM INVITATION
+                      </h2>
+                      <div className="w-12 h-12 bg-gradient-to-r from-blue-200 to-purple-200 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-300/30">
+                        <Users className="w-6 h-6 text-slate-700" />
+                      </div>
+                    </div>
+                    <p className="text-xl text-slate-600 font-light tracking-wide">JIS College of Engineering celebration protocol activated</p>
+                  </div>
+                
+                <div className="grid md:grid-cols-2 gap-10">
+                  <div className="space-y-8">
+                                          {[
+                        { icon: Calendar, label: "DATE STAMP", value: "SEPTEMBER 5, 2025", color: "from-slate-200 to-blue-200" },
+                        { icon: Clock, label: "TIME SYNC", value: "2:00 - 5:00 PM", color: "from-blue-200 to-purple-200" }
+                      ].map((item, i) => (
+                        <div key={i} className="group flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-slate-300/20 hover:border-slate-400/30 transition-all duration-300 hover:scale-102">
+                          <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-black/20`}>
+                            <item.icon className="w-6 h-6 text-slate-700" />
+                          </div>
+                          <div>
+                            <h3 className="text-xs font-bold text-slate-600 tracking-widest mb-1">{item.label}</h3>
+                            <p className="text-lg font-bold text-slate-800">{item.value}</p>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                   
-                  <div className="space-y-6">
-                    {[
-                      { icon: MapPin, label: "LOCATION NODE", value: "MB 306" },
-                      { icon: Heart, label: "DRESS PROTOCOL", value: "SMART CASUAL MODE" }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 group">
-                        <div className="w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                          <item.icon className="w-5 h-5 text-white" />
+                  <div className="space-y-8">
+                                          {[
+                        { icon: MapPin, label: "LOCATION NODE", value: "MB 306", color: "from-purple-200 to-indigo-200" },
+                        { icon: Heart, label: "DRESS PROTOCOL", value: "SMART CASUAL MODE", color: "from-indigo-200 to-blue-200" }
+                      ].map((item, i) => (
+                        <div key={i} className="group flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-slate-300/20 hover:border-slate-400/30 transition-all duration-300 hover:scale-102">
+                          <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-black/20`}>
+                            <item.icon className="w-6 h-6 text-slate-700" />
+                          </div>
+                          <div>
+                            <h3 className="text-xs font-bold text-slate-600 tracking-widest mb-1">{item.label}</h3>
+                            <p className="text-lg font-bold text-slate-800">{item.value}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-xs font-bold text-cyan-400 tracking-widest mb-1">{item.label}</h3>
-                          <p className="text-lg font-semibold text-white">{item.value}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
                 
                 <div className="mt-8 text-center">
-                  <p className="text-base text-slate-300 mb-6 leading-relaxed">
-                    Join us for an immersive celebration of educational excellence at JIS College of Engineering. 
-                    Honoring our dedicated faculty and celebrating the spirit of teaching and learning.
-                  </p>
+                  <div className="inline-block p-4 rounded-xl bg-white/15 backdrop-blur-sm border border-slate-300/25">
+                    <p className="text-base text-slate-700 leading-relaxed font-medium">
+                      Join us for an immersive celebration of educational excellence at JIS College of Engineering. 
+                      Honoring our dedicated faculty and celebrating the spirit of teaching and learning.
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -361,13 +417,16 @@ export default function FuturisticTeachersDay() {
             </div>
             
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Generator Interface */}
+              {/* Optimized Generator Interface with Off-White Bluish Purple */}
               <div className="space-y-6">
-                <Card className="bg-gradient-to-br from-slate-900/80 to-blue-900/40 backdrop-blur-xl border-2 border-blue-500/30 shadow-2xl shadow-blue-500/20">
-                  <CardContent className="p-6">
-                    <div className="space-y-6">
+                <Card className="relative overflow-hidden bg-gradient-to-br from-slate-100/40 via-blue-100/30 to-purple-100/40 backdrop-blur-xl border border-slate-300/25 shadow-xl shadow-black/20">
+                  {/* Glass Effect Overlay */}
+                  <div className="absolute inset-0 bg-white/8 backdrop-blur-sm"></div>
+                  
+                  <CardContent className="relative z-10 p-6">
+                    <div className="space-y-8">
                       <div className="relative">
-                        <label className="block text-lg font-bold text-blue-300 mb-4 tracking-wider">
+                        <label className="block text-xl font-black text-slate-800 mb-6 tracking-wider">
                           TEACHER NAME INPUT
                         </label>
                         <Input
@@ -375,32 +434,34 @@ export default function FuturisticTeachersDay() {
                           placeholder="Enter teacher's name..."
                           value={teacherName}
                           onChange={(e) => handleNameChange(e.target.value)}
-                          className={`bg-slate-900/50 border-2 ${
+                          className={`bg-white/20 backdrop-blur-sm border-2 ${
                             isVerified 
-                              ? 'border-green-400 focus:border-green-300' 
+                              ? 'border-green-400/50 focus:border-green-300/70' 
                               : verificationMessage && !isVerified 
-                                ? 'border-red-400 focus:border-red-300'
-                                : 'border-blue-500/30 focus:border-cyan-400'
-                          } text-white placeholder-slate-500 text-base py-3 rounded-lg backdrop-blur-sm transition-all duration-300`}
+                                ? 'border-red-400/50 focus:border-red-300/70'
+                                : 'border-slate-300/50 focus:border-blue-400/50'
+                          } text-slate-800 placeholder-slate-500 text-lg py-4 px-6 rounded-2xl transition-all duration-500 focus:ring-2 focus:ring-blue-400/20`}
                         />
                         
                         {/* Verification Status */}
                         {verificationMessage && (
-                          <div className={`mt-3 text-sm font-bold tracking-wider ${
-                            isVerified ? 'text-green-400' : 'text-red-400'
+                          <div className={`mt-4 text-base font-bold tracking-wider p-3 rounded-xl backdrop-blur-sm ${
+                            isVerified 
+                              ? 'text-green-400 bg-green-400/10 border border-green-400/20' 
+                              : 'text-red-400 bg-red-400/10 border border-red-400/20'
                           }`}>
                             {verificationMessage}
                           </div>
                         )}
                         
-                        {/* Suggestions Dropdown */}
+                        {/* Optimized Suggestions Dropdown */}
                         {showSuggestions && suggestions.length > 0 && (
-                          <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-xl border border-blue-500/30 rounded-xl shadow-2xl shadow-blue-500/20 z-50 max-h-60 overflow-y-auto">
+                          <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-xl border border-slate-300/25 rounded-xl shadow-xl shadow-black/20 z-50 max-h-60 overflow-y-auto">
                             {suggestions.map((suggestion, index) => (
                               <button
                                 key={index}
                                 onClick={() => selectSuggestion(suggestion)}
-                                className="w-full text-left px-4 py-3 text-white hover:bg-blue-600/20 transition-colors duration-200 first:rounded-t-xl last:rounded-b-xl border-b border-blue-500/10 last:border-b-0"
+                                className="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-100/50 transition-all duration-200 first:rounded-t-xl last:rounded-b-xl border-b border-slate-200/50 last:border-b-0 font-medium"
                               >
                                 {suggestion}
                               </button>
@@ -412,34 +473,34 @@ export default function FuturisticTeachersDay() {
                       <Button
                         onClick={downloadCard}
                         disabled={!isVerified || isGenerating}
-                        className={`w-full font-bold py-4 rounded-lg text-base transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg ${
+                        className={`w-full font-black py-6 rounded-2xl text-lg transition-all duration-500 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-2xl ${
                           isVerified 
-                            ? 'bg-gradient-to-r from-green-600 via-blue-600 to-cyan-600 hover:from-green-700 hover:via-blue-700 hover:to-cyan-700 shadow-green-500/30' 
+                            ? 'bg-gradient-to-r from-green-600 via-blue-600 to-cyan-600 hover:from-green-700 hover:via-blue-700 hover:to-cyan-700 shadow-green-500/30 hover:shadow-green-500/50' 
                             : 'bg-gradient-to-r from-slate-600 to-slate-700 shadow-slate-500/30'
                         }`}
                       >
                         {isGenerating ? (
-                          <div className="flex items-center gap-3">
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <div className="flex items-center gap-4">
+                            <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
                             PREPARING YOUR CARD...
                           </div>
                         ) : !isVerified ? (
-                          <div className="flex items-center gap-2">
-                            <Shield className="w-5 h-5" />
+                          <div className="flex items-center gap-3">
+                            <Shield className="w-6 h-6" />
                             VERIFICATION REQUIRED
                           </div>
                         ) : (
-                          <div className="flex items-center gap-3">
-                            <Download className="w-6 h-6" />
+                          <div className="flex items-center gap-4">
+                            <Download className="w-7 h-7" />
                             DOWNLOAD YOUR CARD
                           </div>
                         )}
                       </Button>
                       
-                      {/* Teacher Count Info */}
-                      <div className="text-center">
-                        <p className="text-sm text-slate-400">
-                          <span className="text-blue-400 font-bold">{approvedTeachers.length}</span> CSE faculty members in database
+                      {/* Optimized Teacher Count Info */}
+                      <div className="text-center p-3 rounded-xl bg-white/15 backdrop-blur-sm border border-slate-300/25">
+                        <p className="text-sm text-slate-600 font-medium">
+                          <span className="text-blue-600 font-bold text-base">{approvedTeachers.length}</span> CSE faculty members in database
                         </p>
                       </div>
                     </div>
@@ -447,25 +508,28 @@ export default function FuturisticTeachersDay() {
                 </Card>
               </div>
               
-              {/* Holographic Preview */}
+              {/* Optimized Holographic Preview with Off-White Bluish Purple */}
               <div className="relative">
                 <Card 
                   ref={cardRef}
-                  className={`aspect-[4/3] bg-gradient-to-br from-slate-900 via-blue-900/50 to-slate-900 border-2 ${
-                    isVerified ? 'border-green-400/70 shadow-green-400/40' : 'border-blue-500/50 shadow-blue-500/30'
-                  } shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden ${
-                    showCelebration ? 'animate-pulse scale-105' : ''
+                  className={`relative overflow-hidden aspect-[4/3] bg-gradient-to-br from-slate-100/40 via-blue-100/30 to-purple-100/40 backdrop-blur-xl border ${
+                    isVerified ? 'border-green-400/30 shadow-green-400/20' : 'border-slate-300/25 shadow-blue-300/15'
+                  } shadow-xl transform hover:scale-102 transition-all duration-300 overflow-hidden ${
+                    showCelebration ? 'animate-pulse scale-102' : ''
                   }`}
                 >
+                  {/* Glass Effect Overlay */}
+                  <div className="absolute inset-0 bg-white/8 backdrop-blur-sm"></div>
+                  
                   {teacherName && isVerified ? (
-                    <div className="h-full w-full relative">
+                    <div className="h-full w-full relative z-10">
                       {/* Success overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-transparent to-cyan-400/10 z-10 pointer-events-none"></div>
                       
                       <img 
                         src={getTeacherCardPath(teacherName)}
                         alt={`${teacherName} Teachers Day Card`}
-                        className="w-full h-full object-cover rounded-lg transition-all duration-500"
+                        className="w-full h-full object-cover rounded-2xl transition-all duration-500"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           const target = e.target as HTMLImageElement;
@@ -474,52 +538,52 @@ export default function FuturisticTeachersDay() {
                         }}
                       />
                       
-                      {/* Fallback content */}
-                      <div className="hidden h-full flex flex-col justify-center items-center text-center p-8 relative z-10">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-cyan-600/20"></div>
-                        <div className="space-y-4">
-                          <div className="text-6xl mb-4">🎉</div>
-                          <h3 className="text-3xl font-black text-transparent bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text">
-                            CONGRATULATIONS!
-                          </h3>
-                          <p className="text-xl font-bold text-white">
-                            {teacherName}
-                          </p>
-                          <p className="text-lg text-green-400 font-semibold">
-                            🎁 Your surprise card is ready!
-                          </p>
+                                              {/* Enhanced Fallback content */}
+                        <div className="hidden h-full flex flex-col justify-center items-center text-center p-8 relative z-10">
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 via-transparent to-purple-200/30 rounded-2xl"></div>
+                          <div className="space-y-6 relative z-10">
+                            <div className="text-8xl mb-6 animate-bounce">🎉</div>
+                            <h3 className="text-4xl font-black text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
+                              CONGRATULATIONS!
+                            </h3>
+                            <p className="text-2xl font-bold text-slate-800">
+                              {teacherName}
+                            </p>
+                            <p className="text-xl text-blue-600 font-semibold">
+                              🎁 Your surprise card is ready!
+                            </p>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   ) : (
                     <CardContent className="h-full flex flex-col justify-center items-center text-center p-8 relative z-10">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-cyan-600/10 animate-pulse"></div>
-                      <div className="absolute inset-4 border border-blue-400/30 rounded-lg animate-pulse"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-transparent to-purple-200/20 animate-pulse rounded-2xl"></div>
+                      <div className="absolute inset-4 border border-slate-300/30 rounded-2xl animate-pulse"></div>
                       
-                      <div className="space-y-6 relative z-10">
+                      <div className="space-y-8 relative z-10">
                         <div className="text-center">
-                          <div className="text-6xl mb-6 animate-bounce">🎁</div>
-                          <h3 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text mb-4">
+                          <div className="text-8xl mb-8 animate-bounce">🎁</div>
+                          <h3 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text mb-6">
                             WELCOME
                           </h3>
-                          <p className="text-lg font-bold text-blue-300 tracking-widest">
+                          <p className="text-xl font-bold text-slate-600 tracking-widest">
                             🎯 CSE TEACHER'S DAY
                           </p>
                         </div>
                         
-                        <div className="space-y-3">
-                          <p className="text-xl text-slate-300 font-medium tracking-wide animate-pulse">
+                        <div className="space-y-4">
+                          <p className="text-2xl text-slate-600 font-medium tracking-wide animate-pulse">
                             ✨ Fill the form above
                           </p>
-                          <p className="text-2xl text-cyan-400 font-bold tracking-wide animate-bounce">
+                          <p className="text-3xl text-blue-600 font-bold tracking-wide animate-bounce">
                             to get a SURPRISE! 🎉✨
                           </p>
                         </div>
                         
-                        <div className="flex justify-center items-center gap-4 text-blue-400 pt-4">
-                          <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
-                          <span className="text-lg font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
-                          <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
+                        <div className="flex justify-center items-center gap-6 text-slate-600 pt-6">
+                          <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+                          <span className="text-xl font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
+                          <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
                         </div>
                       </div>
                     </CardContent>
@@ -530,24 +594,29 @@ export default function FuturisticTeachersDay() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-gradient-to-r from-slate-900 via-blue-900/50 to-slate-900 border-t border-blue-500/20 py-12 mt-16">
-          <div className="container mx-auto px-4 text-center">
-            <div className="flex justify-center items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-white" />
+        {/* Footer with Purple-Blue Theme */}
+        <footer className="relative bg-gradient-to-r from-purple-900/80 via-blue-900/60 to-purple-900/80 backdrop-blur-xl border-t border-blue-400/30 py-12 mt-16">
+          {/* Glass Effect Overlay */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="flex justify-center items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                <BookOpen className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
+              <span className="text-3xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text">
                 JIS COLLEGE OF ENGINEERING 2025
               </span>
             </div>
-            <p className="text-blue-300 text-base font-light mb-6">
-              Celebrating excellence in Computer Science education
-            </p>
-            <div className="flex justify-center items-center gap-6">
-              <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-              <span className="text-lg text-slate-400 tracking-wider">SYSTEM ONLINE</span>
-              <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse delay-300"></div>
+            <div className="inline-block p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-blue-300/30 mb-8">
+              <p className="text-blue-200 text-lg font-medium">
+                Celebrating excellence in Computer Science education
+              </p>
+            </div>
+            <div className="flex justify-center items-center gap-8">
+              <div className="w-4 h-4 bg-blue-400 rounded-full animate-pulse shadow-lg shadow-blue-400/50"></div>
+              <span className="text-xl text-blue-200 tracking-wider font-medium">SYSTEM ONLINE</span>
+              <div className="w-4 h-4 bg-purple-400 rounded-full animate-pulse delay-300 shadow-lg shadow-purple-400/50"></div>
             </div>
           </div>
         </footer>
@@ -564,9 +633,28 @@ export default function FuturisticTeachersDay() {
           50% { transform: translateY(-20px) rotate(180deg); }
         }
         
+        @keyframes float-orb {
+          0%, 100% { 
+            transform: translateY(0px) translateX(0px) scale(1); 
+            opacity: 0.15;
+          }
+          25% { 
+            transform: translateY(-25px) translateX(15px) scale(1.05); 
+            opacity: 0.2;
+          }
+          50% { 
+            transform: translateY(-40px) translateX(-8px) scale(0.95); 
+            opacity: 0.25;
+          }
+          75% { 
+            transform: translateY(-15px) translateX(-20px) scale(1.02); 
+            opacity: 0.18;
+          }
+        }
+        
         @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-          50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+          0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+          50% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.6); }
         }
       `}</style>
     </div>
