@@ -72,103 +72,16 @@ export default function FuturisticTeachersDay() {
     setShowCelebration(true); // Show celebration effect when generating
     
     setTimeout(() => {
+      // Get the PNG file path
+      const pngPath = getTeacherCardPath(teacherName);
+      
+      // Create a temporary link to download the PNG file
       const link = document.createElement('a');
-      link.download = `futuristic-teachers-day-${teacherName.replace(/\s+/g, '-').toLowerCase()}.png`;
+      link.href = pngPath;
+      link.download = `teachers-day-${teacherName.replace(/\s+/g, '-').toLowerCase()}.png`;
       
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      
-      if (ctx) {
-        canvas.width = 1000;
-        canvas.height = 700;
-        
-        // Futuristic gradient background
-        const gradient = ctx.createLinearGradient(0, 0, 1000, 700);
-        gradient.addColorStop(0, '#000000');
-        gradient.addColorStop(0.3, '#0f172a');
-        gradient.addColorStop(0.6, '#1e293b');
-        gradient.addColorStop(1, '#0ea5e9');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 1000, 700);
-        
-        // Neon border
-        ctx.strokeStyle = '#00d4ff';
-        ctx.lineWidth = 4;
-        ctx.shadowColor = '#00d4ff';
-        ctx.shadowBlur = 20;
-        ctx.strokeRect(20, 20, 960, 660);
-        
-        // Inner glow border
-        ctx.strokeStyle = '#3b82f6';
-        ctx.lineWidth = 2;
-        ctx.shadowBlur = 10;
-        ctx.strokeRect(40, 40, 920, 620);
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        
-        // Title with glow effect
-        ctx.fillStyle = '#00d4ff';
-        ctx.textAlign = 'center';
-        ctx.font = 'bold 56px Arial';
-        ctx.shadowColor = '#00d4ff';
-        ctx.shadowBlur = 30;
-        ctx.fillText("TEACHER'S DAY 2025", 500, 150);
-        
-        // Subtitle
-        ctx.font = 'bold 32px Arial';
-        ctx.fillStyle = '#60a5fa';
-        ctx.shadowBlur = 15;
-        ctx.fillText("FUTURE EDUCATOR", 500, 200);
-        
-        // Name
-        if (teacherName) {
-          ctx.font = 'bold 42px Arial';
-          ctx.fillStyle = '#ffffff';
-          ctx.shadowColor = '#3b82f6';
-          ctx.shadowBlur = 20;
-          ctx.fillText(teacherName.toUpperCase(), 500, 300);
-        }
-        
-        // Message
-        ctx.font = '28px Arial';
-        ctx.fillStyle = '#94a3b8';
-        ctx.shadowBlur = 10;
-        ctx.fillText('SHAPING MINDS • BUILDING FUTURES', 500, 400);
-        ctx.fillText('INSPIRING INNOVATION', 500, 450);
-        
-        // Date with special styling
-        ctx.font = 'bold 24px Arial';
-        ctx.fillStyle = '#00d4ff';
-        ctx.shadowColor = '#00d4ff';
-        ctx.shadowBlur = 15;
-        ctx.fillText('SEPTEMBER 5, 2025', 500, 550);
-        
-        // Decorative elements
-        ctx.fillStyle = '#3b82f6';
-        ctx.shadowColor = '#3b82f6';
-        ctx.shadowBlur = 20;
-        
-        // Left decoration
-        ctx.fillRect(100, 320, 4, 100);
-        ctx.fillRect(80, 340, 44, 4);
-        ctx.fillRect(80, 380, 44, 4);
-        
-        // Right decoration
-        ctx.fillRect(896, 320, 4, 100);
-        ctx.fillRect(876, 340, 44, 4);
-        ctx.fillRect(876, 380, 44, 4);
-        
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob);
-            link.href = url;
-            link.click();
-            URL.revokeObjectURL(url);
-          }
-        });
-      }
+      // Trigger the download
+      link.click();
       
       setIsGenerating(false);
     }, 1500);
