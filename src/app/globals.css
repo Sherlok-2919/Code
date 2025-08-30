@@ -80,3 +80,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure text doesn't overflow on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better spacing for mobile cards */
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ensure proper aspect ratios on mobile */
+@media (max-width: 768px) {
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Better grid layouts for mobile */
+  .grid {
+    gap: 1rem;
+  }
+}
