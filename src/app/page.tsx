@@ -6,9 +6,56 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { approvedTeachers, isTeacherApproved } from '@/data/teachers';
+import confetti from 'canvas-confetti';
 
 const getTeacherCardPath = (teacherName: string): string => {
   return `/data/cards/${teacherName}.png`;
+};
+
+// Enhanced confetti celebration
+const triggerConfettiCelebration = () => {
+  // Multiple confetti bursts
+  const duration = 3000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+  function randomInRange(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval: NodeJS.Timeout = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+
+    // Left side burst
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      colors: ['#00d4ff', '#0099cc', '#66e0ff', '#33ccff', '#0066ff']
+    });
+
+    // Right side burst
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      colors: ['#00d4ff', '#0099cc', '#66e0ff', '#33ccff', '#0066ff']
+    });
+
+    // Center burst
+    confetti({
+      ...defaults,
+      particleCount: particleCount * 2,
+      origin: { x: 0.5, y: 0.3 },
+      colors: ['#00d4ff', '#0099cc', '#66e0ff', '#33ccff', '#0066ff', '#ffffff']
+    });
+  }, 250);
 };
 
 export default function FuturisticTeachersDay() {
@@ -84,18 +131,23 @@ export default function FuturisticTeachersDay() {
       link.click();
       
       setIsGenerating(false);
+      
+      // Stop celebration effect after 1 minute
+      setTimeout(() => {
+        setShowCelebration(false);
+      }, 60000);
     }, 1500);
   };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       {/* Enhanced Background with Moving Elements */}
-      <div className="fixed inset-0">
+      <div className="fixed inset-0 opacity-20">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/30 to-slate-900"></div>
         
         {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-40">
           <div className="absolute inset-0" style={{
             backgroundImage: `
               linear-gradient(rgba(0, 212, 255, 0.15) 1px, transparent 1px),
@@ -111,15 +163,17 @@ export default function FuturisticTeachersDay() {
           {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="absolute rounded-full blur-2xl opacity-15"
+              className="absolute rounded-full blur-2xl opacity-25"
               style={{
-                width: `${100 + Math.random() * 150}px`,
-                height: `${100 + Math.random() * 150}px`,
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 background: `radial-gradient(circle, ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'} 0%, transparent 70%)`,
                 animation: `float-orb ${12 + Math.random() * 8}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 4}s`
+                animationDelay: `${Math.random() * 4}s`,
+                filter: `drop-shadow(0 0 20px ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'}) drop-shadow(0 0 40px ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'})`,
+                boxShadow: `0 0 30px ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'}, 0 0 60px ${i % 2 === 0 ? '#00d4ff' : '#3b82f6'}`
               }}
             />
           ))}
@@ -144,7 +198,7 @@ export default function FuturisticTeachersDay() {
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-50"
+            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-70"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -304,10 +358,35 @@ export default function FuturisticTeachersDay() {
                     </div>
                   </div>
                   
+                  {/* Availability Overlay */}
+                  <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-20">
+                    <div className="text-center p-6 md:p-8 max-w-md mx-auto">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-2xl shadow-blue-500/30">
+                        <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-black text-white mb-3 md:mb-4">
+                        🎬 VIDEO COMING SOON
+                      </h3>
+                      <p className="text-lg md:text-xl text-blue-200 font-bold mb-2 md:mb-3">
+                        This Surprise will be Available
+                      </p>
+                      <p className="text-2xl md:text-3xl text-yellow-300 font-black tracking-wider">
+                        on 5 Sept onwards
+                      </p>
+                      <div className="mt-4 md:mt-6 p-3 md:p-4 bg-white/10 rounded-xl border border-white/20">
+                        <p className="text-sm md:text-base text-white/90 font-medium">
+                          Stay tuned for our special Teachers Day tribute video!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
                   {/* Custom Play Button Overlay */}
                   <div 
                     id="playButtonOverlay"
-                    className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/50"
+                    className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/50 z-10"
                     onClick={() => {
                       const video = document.getElementById('teachersDayVideo') as HTMLVideoElement;
                       const overlay = document.getElementById('playButtonOverlay');
@@ -637,32 +716,32 @@ export default function FuturisticTeachersDay() {
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-transparent to-purple-200/20 animate-pulse rounded-2xl"></div>
                       <div className="absolute inset-4 border border-slate-300/30 rounded-2xl animate-pulse"></div>
                       
-                      <div className="space-y-8 relative z-10">
-                        <div className="text-center">
-                          <div className="text-8xl mb-8 animate-bounce">🎁</div>
-                          <h3 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text mb-6">
-                            WELCOME
-                          </h3>
-                          <p className="text-xl font-bold text-slate-600 tracking-widest">
-                            🎯 CSE TEACHER'S DAY
-                          </p>
+                                              <div className="space-y-6 relative z-10">
+                          <div className="text-center">
+                            <div className="text-6xl mb-6 animate-bounce">🎁</div>
+                            <h3 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text mb-4">
+                              WELCOME
+                            </h3>
+                            <p className="text-lg md:text-xl font-bold text-slate-600 tracking-widest mb-2">
+                              🎯 CSE TEACHER'S DAY
+                            </p>
+                          </div>
+                          
+                          <div className="space-y-3">
+                            <p className="text-lg md:text-xl text-slate-600 font-medium tracking-wide animate-pulse">
+                              ✨ Fill the form above
+                            </p>
+                            <p className="text-xl md:text-2xl text-blue-600 font-bold tracking-wide animate-bounce">
+                              to get a SURPRISE! 🎉✨
+                            </p>
+                          </div>
+                          
+                          <div className="flex justify-center items-center gap-4 text-slate-600 pt-4">
+                            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+                            <span className="text-sm md:text-base font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
+                            <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
+                          </div>
                         </div>
-                        
-                        <div className="space-y-4">
-                          <p className="text-2xl text-slate-600 font-medium tracking-wide animate-pulse">
-                            ✨ Fill the form above
-                          </p>
-                          <p className="text-3xl text-blue-600 font-bold tracking-wide animate-bounce">
-                            to get a SURPRISE! 🎉✨
-                          </p>
-                        </div>
-                        
-                        <div className="flex justify-center items-center gap-6 text-slate-600 pt-6">
-                          <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
-                          <span className="text-xl font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
-                          <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
-                        </div>
-                      </div>
                     </CardContent>
                   )}
                 </Card>
@@ -671,29 +750,53 @@ export default function FuturisticTeachersDay() {
           </div>
         </section>
 
-        {/* Footer with Purple-Blue Theme */}
-        <footer className="relative bg-gradient-to-r from-purple-900/80 via-blue-900/60 to-purple-900/80 backdrop-blur-xl py-8 md:py-12 mt-12 md:mt-16">
+        {/* Enhanced Footer with Crispy Blue-Black Theme */}
+        <footer className="relative bg-gradient-to-r from-slate-900 via-blue-950 to-black backdrop-blur-xl py-12 md:py-16 mt-16 md:mt-20 overflow-hidden">
           {/* Glass Effect Overlay */}
-          <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-cyan-500/3 to-transparent backdrop-blur-sm"></div>
+          
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 via-blue-400 to-transparent opacity-80"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 via-cyan-500 to-transparent opacity-80"></div>
+            <div className="absolute top-1/2 left-0 w-1 h-32 bg-gradient-to-b from-transparent via-cyan-400 to-transparent opacity-60 transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 right-0 w-1 h-32 bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-60 transform -translate-y-1/2"></div>
+          </div>
           
           <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="flex justify-center items-center gap-2 md:gap-4 mb-4 md:mb-6">
-              <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-                <BookOpen className="w-4 h-4 md:w-6 md:h-6 text-white" />
+            {/* Main Logo and Title */}
+            <div className="flex justify-center items-center gap-3 md:gap-6 mb-6 md:mb-8">
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-r from-cyan-500 via-blue-600 to-blue-700 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/50 transform hover:scale-110 transition-all duration-300">
+                <BookOpen className="w-5 h-5 md:w-7 md:h-7 text-white" />
               </div>
-              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text">
+              <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-gradient-to-r from-cyan-300 via-blue-300 to-blue-400 bg-clip-text">
                 JIS COLLEGE OF ENGINEERING 2025
               </span>
             </div>
-            <div className="inline-block p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-sm border border-blue-300/30 mb-6 md:mb-8">
-              <p className="text-blue-200 text-sm md:text-lg font-medium">
-                Celebrating excellence in Computer Science education
+            
+            {/* Enhanced Description */}
+            <div className="inline-block p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-cyan-500/10 via-blue-500/15 to-blue-600/10 backdrop-blur-sm border border-cyan-400/50 mb-8 md:mb-10 shadow-xl shadow-cyan-500/30">
+              <p className="text-cyan-100 text-base md:text-xl font-medium mb-2">
+                🎓 Celebrating excellence in Computer Science education
+              </p>
+              <p className="text-blue-200 text-sm md:text-base font-light">
+                Shaping the future of technology and innovation
               </p>
             </div>
-            <div className="flex justify-center items-center gap-4 md:gap-8">
-              <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-400 rounded-full animate-pulse shadow-lg shadow-blue-400/50"></div>
-              <span className="text-base md:text-xl text-blue-200 tracking-wider font-medium">SYSTEM ONLINE</span>
-              <div className="w-3 h-3 md:w-4 md:h-4 bg-purple-400 rounded-full animate-pulse delay-300 shadow-lg shadow-purple-400/50"></div>
+                        <div className="flex justify-center items-center gap-4 md:gap-8 mb-6 md:mb-8">
+              <div className="w-3 h-3 md:w-4 md:h-4 bg-cyan-400 rounded-full animate-pulse shadow-lg shadow-cyan-400/60"></div>
+              <span className="text-base md:text-xl text-cyan-200 tracking-wider font-medium">SYSTEM ONLINE</span>
+              <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-400 rounded-full animate-pulse delay-300 shadow-lg shadow-blue-400/60"></div>
+            </div>
+            
+            {/* Copyright and Links */}
+            <div className="pt-6 md:pt-8 border-t border-cyan-400/30">
+              <p className="text-sm md:text-base text-cyan-200 font-light mb-2">
+                © 2025 JIS College of Engineering. All rights reserved.
+              </p>
+              <p className="text-xs md:text-sm text-blue-300/70 font-light">
+                Computer Science & Engineering Department
+              </p>
             </div>
           </div>
         </footer>
