@@ -116,7 +116,9 @@ export default function FuturisticTeachersDay() {
     }
 
     setIsGenerating(true);
-    setShowCelebration(true); // Show celebration effect when generating
+    setShowCelebration(true);
+    triggerConfettiCelebration();
+// Show celebration effect when generating
     
     setTimeout(() => {
       // Get the PNG file path
