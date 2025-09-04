@@ -391,7 +391,7 @@ export default function FuturisticTeachersDay() {
                   <div className="space-y-4 sm:space-y-6 md:space-y-8">
                                           {[
                         { icon: Calendar, label: "DATE STAMP", value: "SEPTEMBER 5, 2025", color: "from-slate-200 to-blue-200" },
-                        { icon: Clock, label: "TIME SYNC", value: "2:00 - 4:00 PM", color: "from-blue-200 to-purple-200" }
+                        { icon: Clock, label: "TIME SYNC", value: "2:00 ONWARDS", color: "from-blue-200 to-purple-200" }
                       ].map((item, i) => (
                         <div key={i} className="group flex items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-slate-300/20 hover:border-slate-400/30 transition-all duration-300 hover:scale-102">
                           <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-black/20`}>
