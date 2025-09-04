@@ -1,6 +1,7 @@
 // Pre-approved teachers list
 export const approvedTeachers = [ 
-    "Dr. Pranati Rakshit", 
+    "Dr. Pranati Rakshit",
+    "Dr. Amrita Namatirtha",
     "Jayshree Bhattacharya", 
     "Bikramjit Sarkar", 
     "Sumanta Chatterjee", 
