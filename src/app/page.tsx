@@ -391,7 +391,7 @@ export default function FuturisticTeachersDay() {
                   <div className="space-y-4 sm:space-y-6 md:space-y-8">
                                           {[
                         { icon: Calendar, label: "DATE STAMP", value: "SEPTEMBER 5, 2025", color: "from-slate-200 to-blue-200" },
-                        { icon: Clock, label: "TIME SYNC", value: "2:00 - 4:00 PM", color: "from-blue-200 to-purple-200" }
+                        { icon: Clock, label: "TIME SYNC", value: "2:00 PM ONWARDS", color: "from-blue-200 to-purple-200" }
                       ].map((item, i) => (
                         <div key={i} className="group flex items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-slate-300/20 hover:border-slate-400/30 transition-all duration-300 hover:scale-102">
                           <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center group-hover:rotate-6 group-hover:scale-105 transition-all duration-300 shadow-lg shadow-black/20`}>
@@ -561,7 +561,7 @@ export default function FuturisticTeachersDay() {
               <div className="relative">
                 <Card 
                   ref={cardRef}
-                  className={`relative overflow-hidden aspect-[4/3] bg-gradient-to-br from-slate-100/40 via-blue-100/30 to-purple-100/40 backdrop-blur-xl border ${
+                  className={`relative overflow-hidden aspect-[3/4] sm:aspect-[4/3] bg-gradient-to-br from-slate-100/40 via-blue-100/30 to-purple-100/40 backdrop-blur-xl border ${
                     isVerified ? 'border-green-400/30 shadow-green-400/20' : 'border-slate-300/25 shadow-blue-300/15'
                   } shadow-xl transform hover:scale-102 transition-all duration-300 overflow-hidden ${
                     showCelebration ? 'animate-pulse scale-102' : ''
@@ -571,70 +571,76 @@ export default function FuturisticTeachersDay() {
                   <div className="absolute inset-0 bg-white/8 backdrop-blur-sm"></div>
                   
                   {teacherName && isVerified ? (
-                    <div className="h-full w-full relative z-10">
+                    <div className="h-full w-full relative z-10 flex items-center justify-center">
                       {/* Success overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-transparent to-cyan-400/10 z-10 pointer-events-none"></div>
                       
-                      <img 
-                        src={getTeacherCardPath(teacherName)}
-                        alt={`${teacherName} Teachers Day Card`}
-                        className="w-full h-full object-cover rounded-2xl transition-all duration-500"
-                        onError={(e) => {
-                          // Fallback if image doesn't exist
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          target.nextElementSibling?.classList.remove('hidden');
-                        }}
-                      />
+                      <div className="relative w-full h-full flex items-center justify-center p-2">
+                        <img 
+                          src={getTeacherCardPath(teacherName)}
+                          alt={`${teacherName} Teachers Day Card`}
+                          className="max-w-full max-h-full object-contain rounded-xl transition-all duration-500"
+                          style={{
+                            aspectRatio: '4/3',
+                            objectFit: 'contain'
+                          }}
+                          onError={(e) => {
+                            // Fallback if image doesn't exist
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.nextElementSibling?.classList.remove('hidden');
+                          }}
+                        />
+                      </div>
                       
-                                              {/* Enhanced Fallback content */}
-                        <div className="hidden h-full flex flex-col justify-center items-center text-center p-4 sm:p-6 md:p-8 relative z-10">
-                          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 via-transparent to-purple-200/30 rounded-2xl"></div>
-                          <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-10">
-                            <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3 sm:mb-4 md:mb-6 animate-bounce">🎉</div>
-                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                              CONGRATULATIONS!
-                            </h3>
-                            <p className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800">
-                              {teacherName}
-                            </p>
-                            <p className="text-base sm:text-lg md:text-xl text-blue-600 font-semibold">
-                              🎁 Your surprise card is ready!
-                            </p>
-                          </div>
+                      {/* Enhanced Fallback content */}
+                      <div className="hidden h-full flex flex-col justify-center items-center text-center p-4 sm:p-6 md:p-8 relative z-10">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 via-transparent to-purple-200/30 rounded-2xl"></div>
+                        <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-10">
+                          <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-3 sm:mb-4 md:mb-6 animate-bounce">🎉</div>
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
+                            CONGRATULATIONS!
+                          </h3>
+                          <p className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800">
+                            {teacherName}
+                          </p>
+                          <p className="text-base sm:text-lg md:text-xl text-blue-600 font-semibold">
+                            🎁 Your surprise card is ready!
+                          </p>
                         </div>
+                      </div>
                     </div>
                   ) : (
                     <CardContent className="h-full flex flex-col justify-center items-center text-center p-4 sm:p-6 md:p-8 relative z-10">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-transparent to-purple-200/20 animate-pulse rounded-2xl"></div>
                       <div className="absolute inset-2 sm:inset-3 md:inset-4 border border-slate-300/30 rounded-2xl animate-pulse"></div>
                       
-                                              <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-10">
-                          <div className="text-center">
-                            <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 md:mb-6 animate-bounce">🎁</div>
-                            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text mb-2 sm:mb-3 md:mb-4">
-                              WELCOME
-                            </h3>
-                            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-600 tracking-widest mb-1 sm:mb-2">
-                              🎯 CSE TEACHER'S DAY
-                            </p>
-                          </div>
-                          
-                          <div className="space-y-2 sm:space-y-3">
-                            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 font-medium tracking-wide animate-pulse">
-                              ✨ Fill the form above
-                            </p>
-                            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-600 font-bold tracking-wide animate-bounce">
-                              to get a SURPRISE! 🎉✨
-                            </p>
-                          </div>
-                          
-                          <div className="flex justify-center items-center gap-2 sm:gap-3 md:gap-4 text-slate-600 pt-2 sm:pt-3 md:pt-4">
-                            <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
-                            <span className="text-xs sm:text-sm md:text-base font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
-                            <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
-                          </div>
+                      <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-10">
+                        <div className="text-center">
+                          <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 md:mb-6 animate-bounce">🎁</div>
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text mb-2 sm:mb-3 md:mb-4">
+                            WELCOME
+                          </h3>
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-600 tracking-widest mb-1 sm:mb-2">
+                            🎯 CSE TEACHER'S DAY
+                          </p>
                         </div>
+                        
+                        <div className="space-y-2 sm:space-y-3">
+                          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 font-medium tracking-wide animate-pulse">
+                            ✨ Fill the form above
+                          </p>
+                          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-600 font-bold tracking-wide animate-bounce">
+                            to get a SURPRISE! 🎉✨
+                          </p>
+                        </div>
+                        
+                        <div className="flex justify-center items-center gap-2 sm:gap-3 md:gap-4 text-slate-600 pt-2 sm:pt-3 md:pt-4">
+                          <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+                          <span className="text-xs sm:text-sm md:text-base font-bold tracking-widest">🎓 JIS CSE TEACHER'S DAY 2025</span>
+                          <div className="w-4 sm:w-6 md:w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
+                        </div>
+                      </div>
                     </CardContent>
                   )}
                 </Card>

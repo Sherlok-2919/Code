@@ -7,7 +7,7 @@ export const approvedTeachers = [
     "Mr. Sumanta Chatterjee", 
     "Mrs. Jayeeta Ghosh", 
     "Mr. Pijush Kanti Ghosh", 
-    "Mr. Debashish Saha Roy", 
+    "Mr. Debasish Saha Roy", 
     "Mr. Raja Dey", 
     "Mr. Kaushik Roy Choudhury", 
     "Dr. Uddalak Mitra", 
@@ -16,13 +16,13 @@ export const approvedTeachers = [
     "Ms. Purba Mukhopadhyay", 
     "Mr. Shirshendu Dutta", 
     "Dr. Ira Nath", 
-    "Mr. Asim Kumar Paul", 
+    "Mr. Asim Kumar Pal", 
     "Mr. Amit Bera", 
     "Ms. Nandita Pasari",
-    "Ms. Smriti Dey",
+    "Ms. Smrity Dey",
     "Ms. Rakhi Dey", 
     "Mr. Pandey Ji",
-    "Mr. Subhendu Banarjee"
+    "Mr. Subhendu Banerjee"
       ];
       
       export const isTeacherApproved = (name: string): boolean => {
